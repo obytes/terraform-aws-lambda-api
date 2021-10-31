@@ -78,8 +78,8 @@ variable "routes_definitions" {
       authorization_scopes = ["aws.cognito.signin.user.admin"]
     }
     site_map = {
-      operation_name = "Get site map"
-      route_key      = "GET /v1/admins/site-map"
+      operation_name = "Get endpoints list"
+      route_key      = "GET /v1/admin/endpoints"
       # Authorization
       api_key_required     = false
       authorization_type   = "JWT"

@@ -157,7 +157,7 @@ module "gato" {
 ```bash
 curl -X GET https://api.kodhive.com/starter/v1/manage/hc
 {
-    "status": "I'm sexy and i know it"
+    "status": "I'm sexy and I know It"
 }
 ```
 
