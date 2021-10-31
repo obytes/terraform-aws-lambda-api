@@ -109,8 +109,8 @@ module "aws_lambda_api" {
       authorization_scopes = []
     }
     site_map = {
-      operation_name = "Get site map"
-      route_key      = "GET /v1/admins/site-map"
+      operation_name = "Get endpoints list"
+      route_key      = "GET /v1/admin/endpoints"
       # Authorization
       api_key_required     = false
       authorization_type   = "JWT"
@@ -194,7 +194,7 @@ curl -X GET https://api.kodhive.com/starter/v1/users/whoami -H "Authorization: B
 - Admin Endpoint [DENY]
 
 ```bash
-curl -X GET https://api.kodhive.com/starter/v1/admins/site-map -H "Authorization: Bearer NORMAL_USER_FIREBASE_JWT_TOKEN"
+curl -X GET https://api.kodhive.com/starter/v1/admin/endpoints -H "Authorization: Bearer NORMAL_USER_FIREBASE_JWT_TOKEN"
 {
     "error": {
         "code": "002401",
@@ -209,33 +209,33 @@ curl -X GET https://api.kodhive.com/starter/v1/admins/site-map -H "Authorization
 - Admin Endpoint [ALLOW]
 
 ```bash
-curl -X GET https://api.kodhive.com/starter/v1/admins/site-map -H "Authorization: Bearer ADMIN_USER_FIREBASE_JWT_TOKEN"
+curl -X GET https://api.kodhive.com/starter/v1/admin/endpoints -H "Authorization: Bearer ADMIN_USER_FIREBASE_JWT_TOKEN"
 {
-    "links": [
-        [
-            "/mvp/v1/admins/site-map",
-            "api.admins_list_site_map"
-        ],
-        [
-            "/mvp/v1/manage/hc",
-            "api.manage_health_check"
-        ],
-        [
-            "/mvp/v1/users/whoami",
-            "api.users_who_am_i"
-        ],
-        [
-            "/mvp/v1/swagger.json",
-            "api.specs"
-        ],
-        [
-            "/mvp/v1/docs",
-            "api.doc"
-        ],
-        [
-            "/mvp/v1/",
-            "api.root"
-        ]
+    "endpoints": [
+        {
+            "path": "/mvp/v1/manage/hc",
+            "name": "api.manage_health_check"
+        },
+        {
+            "path": "/mvp/v1/admin/endpoints",
+            "name": "api.admin_list_endpoints"
+        },
+        {
+            "path": "/mvp/v1/users/whoami",
+            "name": "api.users_who_am_i"
+        },
+        {
+            "path": "/mvp/v1/swagger.json",
+            "name": "api.specs"
+        },
+        {
+            "path": "/mvp/v1/docs",
+            "name": "api.doc"
+        },
+        {
+            "path": "/mvp/v1/",
+            "name": "api.root"
+        }
     ]
 }
 ```
