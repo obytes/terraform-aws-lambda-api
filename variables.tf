@@ -69,13 +69,17 @@ variable "routes_definitions" {
       operation_name = "Service Health Check"
       route_key      = "GET /v1/manage/hc"
     }
+    token = {
+      operation_name = "Get authorization token"
+      route_key      = "POST /v1/auth/token"
+    }
     whoami = {
       operation_name = "Get user claims"
       route_key      = "GET /v1/users/whoami"
       # Authorization
       api_key_required     = false
       authorization_type   = "JWT"
-      authorization_scopes = ["aws.cognito.signin.user.admin"]
+      authorization_scopes = []
     }
     site_map = {
       operation_name = "Get endpoints list"
@@ -83,7 +87,15 @@ variable "routes_definitions" {
       # Authorization
       api_key_required     = false
       authorization_type   = "JWT"
-      authorization_scopes = ["aws.cognito.signin.user.admin"]
+      authorization_scopes = []
+    }
+    swagger_specification = {
+      operation_name = "Swagger Specification"
+      route_key      = "GET /v1/swagger.json"
+    }
+    swagger_ui = {
+      operation_name = "Swagger UI"
+      route_key      = "GET /v1/docs"
     }
   }
 }
